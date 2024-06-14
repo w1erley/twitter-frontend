@@ -22,9 +22,11 @@ const EditModal = ({
 
   const router = useRouter();
 
-  const imageUrl = photoURL.startsWith('blob')
-    ? photoURL  // Use the blob URL directly
-    : `${process.env.EXTERNAL_API_URL}/storage/${photoURL}`;
+  const imageUrl = photoURL && photoURL.startsWith('blob')
+    ? photoURL
+    : photoURL
+        ? `${process.env.EXTERNAL_API_URL}/storage/${photoURL}`
+        : null; // Handle the case when photoURL is null
 
   const coverInputFileRef = useRef(null);
   const profileInputFileRef = useRef(null);
