@@ -5,7 +5,7 @@
 // import { useRouter } from "next/router";
 // import { useSession } from "next-auth/react";
 
-import Image from "next/image";
+import SidebarLogo from "../components/layout/SidebarLogo";
 import AuthForm from "./components/AuthForm";
 
 export default function Home() {
@@ -32,13 +32,9 @@ export default function Home() {
       "
     >
       <div className="mx-auto w-100" style={{maxWidth: 28+"rem"}}>
-        <Image
-          alt="Logo"
-          height="48"
-          width="48"
-          className="mx-auto d-block"
-          src="/images/logo.png"
-        />
+      <div className="d-block">
+        <SidebarLogo className={"d-block mx-auto"} size="50"/>
+      </div>
         <h2
           className="
             d-block

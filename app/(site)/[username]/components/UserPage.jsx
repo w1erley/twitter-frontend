@@ -46,7 +46,7 @@ const UserPage = ({ username }) => {
       <div className="px-3 pt-4 pb-2">
         <div className="d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
-            <img style={{ width: '150px' }} className="me-3 avatar-sm rounded-circle" src={`http://localhost:8000/storage/${user.image}`} alt="User Avatar" />
+            <img style={{ width: '150px' }} className="me-3 avatar-sm rounded-circle" src={`${process.env.EXTERNAL_API_URL}/storage/${user.image}`} alt="User Avatar" />
             <div className="ms-2">
               <h3 className="card-title mb-0">
                 <a href="#"> {user.name} </a>

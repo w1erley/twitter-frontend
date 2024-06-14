@@ -22,6 +22,10 @@ const EditModal = ({
 
   const router = useRouter();
 
+  const imageUrl = photoURL.startsWith('blob')
+    ? photoURL  // Use the blob URL directly
+    : `${process.env.EXTERNAL_API_URL}/storage/${photoURL}`;
+
   const coverInputFileRef = useRef(null);
   const profileInputFileRef = useRef(null);
 
@@ -51,25 +55,22 @@ const EditModal = ({
               useSkeleton
               className='position-absolute top-0 start-0 bottom-0 end-0 w-100 h-100'
               imgClassName='object-cover rounded-circle transition brightness-75'
-              src={`http://localhost:8000/storage/${photoURL}`}
+              src={imageUrl}
               alt={name}
               layout='fill'
             />
           ) : null}
           <button
-              className="btn position-absolute top-50 start-50 translate-middle"
+              className="btn position-absolute top-50 start-50 translate-middle p-2 rounded-circle"
               onClick={handleClick('profile')}
-              style={{ zIndex: 1, background: 'rgba(0, 0, 0, .4)', width: '42px', height: '42px' }}
+              style={{ zIndex: 1, background: 'rgba(0, 0, 0, .4)'}}
               alt="Change Profile Photo"
             >
-              <div>
-                <CiCamera style={{height: '24px', width: '24px'}} className='d-block'/>
-              </div>
+              <CiCamera style={{height: '24px', width: '24px'}} className='d-block'/>
           </button>
         </div>
         <input type="file" ref={profileInputFileRef} onChange={editImage('profile')} style={{ display: 'none' }} />
         {children}
-        <button onClick={handleClick('profile')}>Change Profile Photo</button>
       </div>
     </>
   )
